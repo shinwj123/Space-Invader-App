@@ -1,0 +1,14 @@
+//
+// Created by shinw on 4/24/2022.
+//
+
+#ifndef FINAL_PROJECT_SHINWJ123_SPACE_INVADER_APP_H
+#define FINAL_PROJECT_SHINWJ123_SPACE_INVADER_APP_H
+
+
+class space_invader_app {
+
+};
+
+
+#endif //FINAL_PROJECT_SHINWJ123_SPACE_INVADER_APP_H

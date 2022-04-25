@@ -4,7 +4,10 @@
 
 
 class main {
+    //loads spritesheet png
     void Load();
+
+    //renders spritesheet png
     void Render();
 };
 

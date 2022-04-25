@@ -3,7 +3,8 @@
 #define FINAL_PROJECT_SHINWJ123_INVADER_H
 
 namespace space_invader_game {
-class invader {
+    //class for invader
+    class invader {
 public:
     explicit invader(const Location& location);
 

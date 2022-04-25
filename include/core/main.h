@@ -3,7 +3,7 @@
 #define FINAL_PROJECT_SHINWJ123_MAIN_H
 
 
-class main {
+class Main {
     //loads spritesheet png
     void Load();
 

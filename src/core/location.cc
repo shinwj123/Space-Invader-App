@@ -2,10 +2,10 @@
 
 namespace space_invader_game {
 
-location::location(int row, int col);
+Location::Location(int row, int col);
 
-int location::row() const;
-int location::col() const;
+int Location::row() const;
+int Location::col() const;
 
 Location& operator+=(const Location& rightLocation) const;{
     *this = *this + rightLocation;

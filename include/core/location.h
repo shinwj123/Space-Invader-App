@@ -4,7 +4,7 @@
 
 namespace space_invader_game {
 
-class location {
+class Location {
 public:
     Location(int row, int col);
 

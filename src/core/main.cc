@@ -3,7 +3,7 @@
 sf::Texture spritesheet;
 sf::Sprite invader;
 
-void main::Load() {
+void Main::Load() {
     if (!spritesheet.loadFromFile("media-resources/invaders_sheet.png")) {
         cerr << "Failed to load spritesheet!" << std::endl;
     }
@@ -11,6 +11,6 @@ void main::Load() {
     invader.setTextureRect(sf::IntRect(0, 0, 32, 32));
 }
 
-void main::Render() {
+void Main::Render() {
     window.draw(invader);
 }

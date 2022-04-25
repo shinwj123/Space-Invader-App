@@ -2,23 +2,23 @@
 #include "location.h"
 
 namespace space_invader {
-    invader::invader(const Location& location)
+    Invader::Invader(const Location& location)
             : location_(location), visible_{true} {}
 
-    Location invader::GetLocation() const {
+    Location Invader::GetLocation() const {
         return location_;
     }
 
-    Location invader::SetLocation(const Location& location) {
+    Location Invader::SetLocation(const Location& location) {
         location_ = location;
         return location_;
     }
 
-    void invader::SetVisibility(bool visible) {
+    void Invader::SetVisibility(bool visible) {
         visible_ = visible;
     }
 
-    bool invader::IsVisibile() const {
+    bool Invader::IsVisibile() const {
         return visible_;
     }
 }

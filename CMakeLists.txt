@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 set(CMAKE_CXX_STANDARD 11)
-project(naive-bayes)
+project(FinalProject
+        VERSION 1.0
+        DESCRIPTION "CS 126 Final Project"
+        LANGUAGES CXX)
 
 # This tells the compiler to not aggressively optimize and
 # to include debugging information so that the debugger
@@ -60,10 +63,11 @@ add_executable(train-model apps/train_model_main.cc ${CORE_SOURCE_FILES})
 target_include_directories(train-model PRIVATE include)
 
 ci_make_app(
-        APP_NAME        sketchpad-classifier
+        APP_NAME        cinder-space invador
         CINDER_PATH     ${CINDER_PATH}
-        SOURCES         apps/cinder_app_main.cc ${SOURCE_FILES}
-        INCLUDES        include
+        SOURCES         ${SOURCE_LIST}
+        LIBRARIES       mylibrary
+        BLOCKS          Cinder-WMFVideo
 )
 
 ci_make_app(

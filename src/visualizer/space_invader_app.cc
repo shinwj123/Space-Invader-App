@@ -1,5 +1,15 @@
-//
-// Created by shinw on 4/24/2022.
-//
+#include "space_invader_app.h"
+#include <cinder/app/App.h>
+#include "ciWMFVideoPlayer.h"
 
-#include "../../include/visualizer/space_invader_app.h"
+namespace spaceInvaderApp {
+using cinder::app::KeyEvent;
+
+spaceInvaderApp::Space_invader_app() { }
+
+void spaceInvaderApp::setup() { }
+
+void spaceInvaderApp::update() { }
+
+
+}

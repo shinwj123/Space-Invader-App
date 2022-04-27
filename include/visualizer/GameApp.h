@@ -4,9 +4,11 @@
 
 namespace spaceInvaderApp {
 
-class space_invader_app : public cinder::app::App {
+class GameApp {
+
+public:
     //empty constructor for space invader application
-    space_invader_app();
+    GameApp();
 
     //setting up the background of the application
     void setup() override;

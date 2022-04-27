@@ -13,6 +13,14 @@ public:
 
     Location& operator+=(const Location& rightLocation) const;
 
+    bool operator()(const Location& lhs, const Location& rhs) const;
+
+    Location operator+(const Location& rhs) const;
+
+    Location operator%(const Location& rhs) const;
+
+    int modular(int a, int b);
+
 private:
     int row_;
     int col_;

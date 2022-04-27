@@ -5,9 +5,9 @@
 namespace spaceInvaderApp {
 using cinder::app::KeyEvent;
 
-spaceInvaderApp::Space_invader_app() { }
+GameApp::GameApp() { }
 
-void spaceInvaderApp::setup() {
+void GameApp::setup() {
     std::string videoPath = getAssetPath( "media-resources/app_background.mp4" ).string();
     mVideo1.loadMovie( videoPath, "Headphones (High Definition Audio Device)" );
     mVideo1.play();
@@ -16,7 +16,9 @@ void spaceInvaderApp::setup() {
     state = GameState::kStartScreen;
 }
 
-void spaceInvaderApp::update() { }
+void GameApp::update() {
+    mVideo1.update();
+}
 
 
 }

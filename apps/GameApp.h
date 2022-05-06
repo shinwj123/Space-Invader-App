@@ -39,8 +39,6 @@ public:
     //updates the acitivities in application
     void update() override;
 
-    //drawing for the game
-    void draw() override;
 
     //clicking the down key
     void keyDown(KeyEvent keyEvent) override;
@@ -48,38 +46,6 @@ public:
     //clicking the up key
     void keyUp(KeyEvent keyEvent) override;
 
-    //reset game
-    void ResetGame();
-
-    //setting animation for wave
-    void SetWaveAnimation(int wave_number);
-
-    //drawing the wave
-    void DrawInvaderWave();
-
-    //moving on to the next wave
-    void NextWave();
-
-    //checking the wave
-    bool IsWaveClear();
-
-    //drawing player
-    void DrawPlayer();
-
-    //drawing projectile from player
-    void DrawPlayerProjectile();
-
-    //drawing projectile from invader
-    void DrawInvaderProjectile();
-
-    //drawing the starting screen
-    void DrawStartScreen();
-
-    //drawing the game over screen
-    void DrawGameOver();
-
-    //drawing the score
-    void DrawScore();
 
 private:
     space_invader::GameEngine gameEngine;

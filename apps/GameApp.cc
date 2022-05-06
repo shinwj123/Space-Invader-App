@@ -74,8 +74,6 @@ void GameApp::update() {
     }
 }
 
-void GameApp::draw() override;
-
 void GameApp::keyDown(KeyEvent keyEvent) {
     switch (keyEvent.getCode()) {
         case KeyEvent::KEY_LEFT: {
@@ -115,28 +113,6 @@ void GameApp::keyUp(KeyEvent keyEvent) {
         }
     }
 }
-
-void GameApp::ResetGame();
-
-void GameApp::SetWaveAnimation(int wave_number);
-
-void GameApp::DrawInvaderWave();
-
-void GameApp::NextWave();
-
-bool GameApp::IsWaveClear();
-
-void GameApp::DrawPlayer();
-
-void GameApp::DrawPlayerProjectile();
-
-void GameApp::DrawInvaderProjectile();
-
-void GameApp::DrawStartScreen();
-
-void GameApp::DrawGameOver();
-
-void GameApp::DrawScore();
 
 
 }

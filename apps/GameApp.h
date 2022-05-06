@@ -39,12 +39,15 @@ public:
     //updates the acitivities in application
     void update() override;
 
+    //drawing for the game
+    void draw() override;
 
     //clicking the down key
     void keyDown(KeyEvent keyEvent) override;
 
     //clicking the up key
     void keyUp(KeyEvent keyEvent) override;
+
 
 
 private:

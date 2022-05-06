@@ -74,6 +74,19 @@ void GameApp::update() {
     }
 }
 
+void GameApp::draw() override {
+    cinder::gl::clear();
+    m_Video.draw( 0, 0, 800, 800 );
+
+    if (state == GameState::kStartScreen) {
+        return;
+    }
+    if (state == GameState::kGameOver) {
+        cinder::gl::clear();
+        m_Video.draw( 0, 0, 800, 800 );
+    }
+}
+
 void GameApp::keyDown(KeyEvent keyEvent) {
     switch (keyEvent.getCode()) {
         case KeyEvent::KEY_LEFT: {

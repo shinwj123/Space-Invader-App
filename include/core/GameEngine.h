@@ -15,6 +15,18 @@ public:
     void SetUpWave();
     Location GetInitialInvaderPosition(int n);
 
+    void SetProjectileDirection(const Movement movement);
+
+    void InvaderMove();
+    void PlayerMove();
+    void PlayerProjectile();
+    void InvaderProjectile();
+
+    Location MoveInvaderWave(bool toRight, int count_to_border);
+    Location MovePlayer();
+    Location MoveProjectile();
+    Location MoveInvaderProjectile();
+
     void NextWave();
     void ResetGame();
 
@@ -35,6 +47,16 @@ private:
     int kDimension = 48;
     int kNumberOfRows = 4;
     int kNumberOfCols = 7;
+
+    Movement move_player;
+    Movement move_player_projectile;
+    Movement move_invader_projectile;
+
+    int count_to_border = 0;
+    int projectile_distance = 0;
+    int invader_projectile_distance = 0;
+
+    bool toRight = true
 }; //class gameEngine
 
 } //namespace space_invader_game

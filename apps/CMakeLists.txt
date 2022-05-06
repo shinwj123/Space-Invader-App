@@ -2,26 +2,27 @@ get_filename_component(CINDER_PATH "../../../../.." ABSOLUTE)
 include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
 file(GLOB SOURCE_LIST CONFIGURE_DEPENDS
-        "${FinalProject_SOURCE_DIR}/tests/*.h"
-        "${FinalProject_SOURCE_DIR}/tests/*.hpp"
-        "${FinalProject_SOURCE_DIR}/tests/*.cc"
-        "${FinalProject_SOURCE_DIR}/tests/*.cpp")
+        "${FinalProject_SOURCE_DIR}/apps/*.h"
+        "${FinalProject_SOURCE_DIR}/apps/*.hpp"
+        "${FinalProject_SOURCE_DIR}/apps/*.cc"
+        "${FinalProject_SOURCE_DIR}/apps/*.cpp")
 
 
 ci_make_app(
-        APP_NAME    test
-        CINDER_PATH ${CINDER_PATH}
-        SOURCES     ${SOURCE_LIST}
-        LIBRARIES   mylibrary catch2
-        BLOCKS
+    APP_NAME    cinder-myapp
+    CINDER_PATH ${CINDER_PATH}
+    SOURCES     ${SOURCE_LIST}
+    LIBRARIES   mylibrary
+    BLOCKS      Cinder-WMFVideo Cinder-poScene Cinder-poSpritesheet
+
 )
 
-target_compile_features(test PRIVATE cxx_std_14)
+target_compile_features(cinder-myapp PRIVATE cxx_std_14)
 
 # Cross-platform compiler lints
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang"
         OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
-    target_compile_options(test PRIVATE
+    target_compile_options(cinder-myapp PRIVATE
             -Wall
             -Wextra
             -Wswitch
@@ -34,6 +35,6 @@ if (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang"
             -pedantic-errors)
 elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
     cmake_policy(SET CMP0015 NEW)
-    target_compile_options(test PRIVATE
+    target_compile_options(cinder-myapp PRIVATE
             /W3)
 endif ()

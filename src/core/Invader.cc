@@ -16,11 +16,11 @@ namespace space_invader_game {
         return location_;
     }
 
-    void Invader::SetVisibility(bool visible) {
-        visible_ = visible;
+    void Invader::SetAlive(bool visible) {
+        alive_ = alive;
     }
 
-    bool Invader::IsVisibile() const {
-        return visible_;
+    bool Invader::IsAlive() const {
+        return alive_;
     }
 }

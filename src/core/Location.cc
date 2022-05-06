@@ -10,7 +10,7 @@ int Locations::row() const {
     return row_;
 }
 int Location::col() const {
-
+    return col_;
 }
 
 bool Location::operator()(const Location& leftLocation, const Location& rightLocation) const {

@@ -6,13 +6,14 @@ namespace space_invader_game {
     //class for invader
 class Invader {
 public:
+    //constructor for invader
     Invaders(const Location& location);
 
     Location GetLocation() const;
     Location SetLocation(const Location&);
 
-    void SetVisibility(bool visible);
-    bool IsVisibile() const;
+    void SetAlive(bool alive);
+    bool IsAlive() const;
 
     constexpr static float WIDTH = 50;
     constexpr static float HEIGHT = 27;
@@ -21,7 +22,7 @@ public:
 
 private:
     Location location_;
-    bool visible_;
+    bool alive_;
 
 }; //class invader
 } //namespace space_invader_game

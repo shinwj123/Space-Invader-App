@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.0",
+    "image": "gameover.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 378,
+      "h": 486
+    },
+    "scale": "1",
+    "smartupdate": "$TexturePacker:SmartUpdate:622db995aea12a82addb015843907098:7d3a2aeb65f0b210e4fb7171a0415338:7ac94ad4b69b76fc7998c80955f4839b$"
+  }
+}

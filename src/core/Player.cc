@@ -6,6 +6,16 @@ namespace space_invader_game {
         visible_ = true;
     }
 
+    void Player::update(float dt) {
+        if (visible_) {
+            velocity *= 0.95f;
+            if (player.getPosition().x <= 0) {
+                velocity.x = 1.0f;
+                player.setPosition(1.0f, 95f);
+            }
+        }
+    }
+
     Location Player::GetLocation() const {
         return location_;
     }
@@ -15,11 +25,11 @@ namespace space_invader_game {
         return location_;
     }
 
-    void Player::SetVisibility(bool visible) {
-        visible_ = visible;
+    void Player::SetAlive(bool alive) {
+        alive_ = alive;
     }
 
-    bool Player::IsVisibile() const {
-        return visible_;
+    bool Player::IsAlive() const {
+        return alive_;
     }
 }

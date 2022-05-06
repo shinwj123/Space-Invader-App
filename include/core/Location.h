@@ -11,14 +11,19 @@ public:
     int row() const;
     int col() const;
 
+    //+= operator for location
     Location& operator+=(const Location& rightLocation) const;
 
-    bool operator()(const Location& lhs, const Location& rhs) const;
+    //operator for location
+    bool operator()(const Location& leftLocation, const Location& rightLocation) const;
 
-    Location operator+(const Location& rhs) const;
+    //+ operator for location
+    Location operator+(const Location& rightLocation) const;
 
-    Location operator%(const Location& rhs) const;
+    //% operator for location
+    Location operator%(const Location& rightLocation) const;
 
+    // helper function for %operator
     int modular(int a, int b);
 
 private:

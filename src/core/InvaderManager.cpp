@@ -13,4 +13,20 @@ namespace space_invader_game {
     Invader InvaderManager::GetCertainAlien(int index) {
         return wave.at(index)
     }
+
+    void InvaderManager::initAddInvader()
+    {
+        static sf::Clock delay;
+        if (delay.getElapsedTime().asSeconds() > 0.02) {
+            invader.at(initY * 11 + initX).makeAlive();
+            aliveInvader++;
+            initX++;
+
+            if (initX == 11) {
+                initX = 0;
+                initY--;
+            }
+            delay.restart();
+        }
+    }
 }

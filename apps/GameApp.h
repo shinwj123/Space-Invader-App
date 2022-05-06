@@ -48,7 +48,26 @@ public:
     //clicking the up key
     void keyUp(KeyEvent keyEvent) override;
 
+    //helper function for NextWave(): setting animation for wave
+    void SetWaveAnimation(int wave_number);
 
+    //drawing the wave
+    void DrawInvaderWave();
+
+    //helper function for Draw(): drawing player
+    void DrawPlayer();
+
+    //helper function for Draw(): drawing projectile from player
+    void DrawPlayerProjectile();
+
+    //helper function for Draw(): drawing projectile from invader
+    void DrawInvaderProjectile();
+
+    //helper function for Draw(): drawing the starting screen
+    void DrawStartScreen();
+
+    //helper function for Draw(): drawing the game over screen
+    void DrawGameOver();
 
 private:
     space_invader::GameEngine gameEngine;
@@ -63,6 +82,13 @@ private:
     time_point<system_clock> last_time_player;
     time_point<system_clock> last_time_projectile;
     time_point<system_clock> last_time_invader_projectile;
+
+    int invader_speed = 400;
+    int player_speed = 20;
+    int projectile_speed = 12;
+    int invader_projectile_speed = 19;
+
+    int wave_count = 0;
 
 
 };  //class space_invader_app

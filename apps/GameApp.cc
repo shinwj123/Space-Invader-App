@@ -48,13 +48,11 @@ void GameApp::update() {
             gameEngine.InvaderProjectileMove();
             last_time_invader_projectile = time;
         }
-        for (po::SpritesheetAnimationRef invader_anim : invader_spritesheetanim_vector) {
-            invader_anim->update();
-        }
-        mSpritesheetAnimation_nyan_cat->update();
 
-        if (IsWaveClear() || is_r_pressed) {
-            NextWave();
+        if (invader.IsVisibile() != true) {
+            gameEngine.NextWave();
+            wave_count++;
+            int current_wave = wave_count % 3;
         }
     }
     if (game == Game::kGameOver && !gameover_) {
@@ -79,11 +77,21 @@ void GameApp::draw() override {
     m_Video.draw( 0, 0, 800, 800 );
 
     if (state == GameState::kStartScreen) {
+        DrawStartScreen();
         return;
     }
+
+    if (gameEngine.GetPlayer().IsAlive() == false) {
+        DrawPlayer();
+        DrawPlayerProjectile();
+        DrawInvader();
+        DrawInvaderProjectile();
+    }
+
     if (state == GameState::kGameOver) {
         cinder::gl::clear();
         m_Video.draw( 0, 0, 800, 800 );
+        DrawGameOver();
     }
 }
 
@@ -99,6 +107,15 @@ void GameApp::keyDown(KeyEvent keyEvent) {
         }
         case KeyEvent::KEY_SPACE: {
             gameEngine.SetProjectileDirection(space_invader_game::Action::kShoot);
+            break;
+        }
+        case KeyEvent::KEY_r: {
+            if (state == GameState::kGameOver) {
+                gameEngine.ResetGame();
+                wave_count = 0;
+                gameover_ = false;
+                game = Game::kStartScreen;
+            }
             break;
         }
         case KeyEvent::KEY_p: {
@@ -127,5 +144,69 @@ void GameApp::keyUp(KeyEvent keyEvent) {
     }
 }
 
-
+void GameApp::DrawInvader() {
+    space_invader_game::Location invader_loc;
+    invader_loc = gameEngine.GetInvader().GetLocation();
+    cinder::vec2 invader_location = cinder::vec2(
+            invader_loc.Row() * kTileSize,
+            invader_loc.Col() * kTileSize);
+    ci::gl::draw(ci::gl::Texture::create(loadImage(
+            loadAsset("invaders.png"))), invader_location);
 }
+
+void GameApp::DrawPlayer() {
+    space_invader_game::Location player_loc;
+    player_loc = gameEngine.GetPlayer().GetLocation();
+    cinder::vec2 player_location = cinder::vec2(
+            player_loc.Row() * kTileSize,
+            player_loc.Col() * kTileSize);
+    ci::gl::draw(ci::gl::Texture::create(loadImage(
+            loadAsset("player.png"))), player_location);
+}
+
+void GameApp::DrawPlayerProjectile() {
+    space_invader_game::Location player_projectile_loc;
+    player_projectile_loc = gameEngine.GetPlayerProjectile().GetLocation();
+    cinder::vec2 player_projectile_location = cinder::vec2(
+            player_projectile_loc.Row() * kTileSize,
+            player_projectile_loc.Col() * kTileSize);
+    ci::gl::draw(ci::gl::Texture::create(loadImage(
+            loadAsset("playerProjectile.png"))), player_projectile_location);
+}
+
+void GameApp::DrawInvaderProjectile() {
+    space_invader_game::Location invader_projectile_loc;
+    invader_projectile_loc = gameEngine.GetInvaderProjectile().GetLocation();
+    cinder::vec2 invader_projectile_location = cinder::vec2(
+            invader_projectile_loc.Row() * kTileSize,
+            invader_projectile_loc.Col() * kTileSize);
+    ci::gl::draw(ci::gl::Texture::create(loadImage(
+            loadAsset("invader_bullet.png"))), invader_projectile_location);
+}
+
+
+void GameApp::DrawStartScreen() {
+    const Color color = Color::yellow();
+    const cinder::vec2 game_title = getWindowCenter();
+    const cinder::vec2 play_message = {getWindowCenter().x,getWindowCenter().y + 50};
+    const cinder::vec2 size = {500, 50};
+    PrintText("SPACE  INVADERS", color, size, game_title);
+    PrintText("PRESS P TO PLAY", color, size, play_message);
+}
+
+void GameApp::DrawGameOver() {
+    mPos = ci::vec2(getWindowCenter().x - 180, getWindowCenter().y);
+    ci::gl::pushModelView();
+    ci::vec2 val = mPos.value();
+    ci::gl::translate(val.x, val.y);
+    mSpritesheetAnimation_gameover -> draw();
+    ci::gl::popModelView();
+
+    const Color color = Color::white();
+    const cinder::vec2 restart_message = {getWindowCenter().x,
+                                          getWindowCenter().y + 100};
+    const cinder::ivec2 size = {500, 50};
+    PrintText("PRESS R TO RESTART", color, size, restart_message);
+}
+
+} //namespace
